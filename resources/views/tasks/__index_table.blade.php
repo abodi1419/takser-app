@@ -32,7 +32,11 @@
                 {{date('h:i A',strtotime($task->end))}}
             </td>
             <td>
-                <a class="nav-link" href="{{route('groups.show',$task->group)}}">{{$task->group->name}}</a>
+                @if($task->group!=null)
+                    <a class="nav-link" href="{{route('groups.show',$task->group)}}">{{$task->group->name}}</a>
+                @else
+                    {{__("None")}}
+                @endif
             </td>
             <td>
                 @if($task->status == 1)
